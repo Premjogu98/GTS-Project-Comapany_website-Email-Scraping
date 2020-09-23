@@ -26,7 +26,6 @@ def CompanyInfoDB_connection():
                   "\n", exc_tb.tb_lineno)
             a = 0
             time.sleep(10)
-            connection.close()
 
 
 def Scraping_Company_Deatils():
@@ -127,7 +126,7 @@ def insert_details(address, Email, mobile, Company_website, Company_product_Serv
     telphone = str(mobile)
     fax = ''
     mobile_no = str(mobile)
-    Emailid = str(Email)
+    s = str(Email)
     skype_id = ''
     website = str(Company_website)
     product_services = str(Company_product_Services_detail)
@@ -143,7 +142,7 @@ def insert_details(address, Email, mobile, Company_website, Company_product_Serv
             CompanyInfoDB_Local = CompanyInfoDB_connection()
             CompanyInfoDB_cursorLocal = CompanyInfoDB_Local.cursor()
 
-            Duplicate_Email = "Select A_id from CompanyInfoIndia where email_id = '" + str(Emailid) + "'"
+            Duplicate_Email = "Select A_id from CompanyInfoInternational where email_id = '" + str(Emailid) + "'"
             CompanyInfoDB_cursorLocal.execute(Duplicate_Email)
             results = CompanyInfoDB_cursorLocal.fetchall()
             if len(results) > 0:
